@@ -13,12 +13,17 @@ class ThemeConfig extends Timber\Site {
 
 	/**
 	 * Thiết lập các giá trị sẽ truyền vào mảng context
-	 * Sử dụng các giá trị này bằng phương thức Timber::context()
+	 * Sử dụng các giá trị này bằng phương thức Timber::context() tại các template như: archive, single, page, template-page...
 	 */
 	public function add_to_context( $context ) {
-		/** Sẽ sử dụng menu mặc định nếu không truyền tên menu vào đối số */
+		/** 
+		 * Menu sẽ được gọi qua key 'menu'. Không truyền đối số 'menuname' Timber sẽ khởi tạo menu mặc định 
+		 * Mỗi key sẽ tương ứng với 1 menu, nếu muốn dùng menu nào thì cần khởi tạo đúng tên menu đó.
+		 * */
 		$context['menu']  = new Timber\Menu();
-		/**  */
+		/** Toàn bộ option được tạo bằng ACF sẽ được gọi thông qua key 'options' */
+		$context['options']  = get_fields('options');
+		//** Các thông số về tên site, url... sẽ được gọi thông qua key 'site' */
 		$context['site']  = $this;
 		return $context;
 	}
@@ -63,7 +68,7 @@ class ThemeConfig extends Timber\Site {
 		add_theme_support( 'menus' );
 	}
 
-	/** This is where you can add your own functions to twig. */
+	/** Phương thức này dùng để khai báo các function hoặc filter muốn sử dụng trong view (twig) */
 	public function add_to_twig( $twig ) {
 		$twig->addExtension( new Twig\Extension\StringLoaderExtension() );
 		/**

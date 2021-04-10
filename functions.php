@@ -50,8 +50,15 @@ if (! function_exists( 'require_files' ) ){
 }
 
 /** Khai báo file sẽ load trong thư mục functions */
-$functions = [
+$admin = [
+	'option',
+	'hook'
+];
+require_files('/admin', $admin);
 
+/** Khai báo file sẽ load trong thư mục admin */
+$functions = [
+	
 ];
 require_files('/functions', $functions);
 
