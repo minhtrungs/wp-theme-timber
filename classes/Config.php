@@ -77,8 +77,8 @@ class ThemeConfig extends Timber\Site {
 		*/
 		$twig->addFilter( new Twig\TwigFilter( 'filter_key', array( $this, 'filter_method' ) ) );
 		/**
-		 * Khai báo hàm sẽ được gọi trong twig 
-		 * Cú pháp gọi hàm trong twig {% fn('callback_function') %}
+		 * Khai báo hàm sẽ được gọi trong twig
+		 * Cú pháp gọi hàm trong twig {{ callback_function() }}
 		 */
 		$twig->addFunction( new Timber\Twig_Function( 'callback_function' ) );
 
