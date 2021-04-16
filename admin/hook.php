@@ -10,3 +10,10 @@ add_action('admin_init', 'remove_acf_options_page', 99);
 function remove_acf_options_page() {
    remove_menu_page('acf-options');
 }
+
+//** Ẩn/hiện trang cài đặt ACF dựa vào hằng WP_DEBUG trong wp-config.php */
+add_filter('acf/settings/show_admin', 'my_acf_show_admin');
+function my_acf_show_admin($show) {
+   return WP_DEBUG;
+}
+
