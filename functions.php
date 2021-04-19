@@ -6,7 +6,7 @@ define( 'THEME_DIR', 	get_template_directory_uri() );
 define( 'THEME_ROOT', 	get_template_directory() );
 
  /** Require Timber */
-$composer_autoload = __DIR__ . '/vendor/autoload.php';
+$composer_autoload = THEME_ROOT . '/vendor/autoload.php';
 if ( file_exists( $composer_autoload ) ) {
 	require_once $composer_autoload;
 	$timber = new Timber\Timber();

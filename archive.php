@@ -14,7 +14,7 @@
  * @since   Timber 0.2
  */
 
-$templates = array( 'archive.twig', 'index.twig' );
+$templates = array( 'archive.html', 'index.html' );
 
 $context = Timber::context();
 
@@ -29,10 +29,10 @@ if ( is_day() ) {
 	$context['title'] = single_tag_title( '', false );
 } elseif ( is_category() ) {
 	$context['title'] = single_cat_title( '', false );
-	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.twig' );
+	array_unshift( $templates, 'archive-' . get_query_var( 'cat' ) . '.html' );
 } elseif ( is_post_type_archive() ) {
 	$context['title'] = post_type_archive_title( '', false );
-	array_unshift( $templates, 'archive-' . get_post_type() . '.twig' );
+	array_unshift( $templates, 'archive-' . get_post_type() . '.html' );
 }
 
 $context['posts'] = new Timber\PostQuery();

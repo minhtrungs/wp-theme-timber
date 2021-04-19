@@ -1,0 +1,13 @@
+{# see `archive.html` for an alternative strategy of extending templates #}
+{% extends "base.html" %}
+
+{% block content %}
+  {# see `base.html:27` for where this block's content will be inserted #}
+  <div class="content-wrapper">
+    {% for post in posts %}
+      {% include ['tease-'~post.post_type~'.html', 'tease.html'] %}
+    {% endfor %}
+
+    {% include 'partial/pagination.html' with { pagination: posts.pagination({show_all: false, mid_size: 3, end_size: 2}) } %}
+  </div>
+{% endblock %}

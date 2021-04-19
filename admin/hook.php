@@ -1,6 +1,6 @@
 <?php
 //** Thay đổi content editor */
-$editor = get_field('default_editor', 'option');
+$editor = get_field('default_editor', 'option') ?: 'classic';
 if($editor==='classic'){
 	add_filter('use_block_editor_for_post', '__return_false');
 }

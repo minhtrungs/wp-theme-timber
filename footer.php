@@ -1,7 +1,7 @@
 <?php
 /**
  * Third party plugins that hijack the theme will call wp_footer() to get the footer template.
- * We use this to end our output buffer (started in header.php) and render into the view/page-plugin.twig template.
+ * We use this to end our output buffer (started in header.php) and render into the view/page-plugin.html template.
  *
  * If you're not using a plugin that requries this behavior (ones that do include Events Calendar Pro and
  * WooCommerce) you can delete this file and header.php
@@ -17,5 +17,5 @@ if ( ! isset( $timberContext ) ) {
 }
 $timberContext['content'] = ob_get_contents();
 ob_end_clean();
-$templates = array( 'page-plugin.twig' );
+$templates = array( 'page-plugin.html' );
 Timber::render( $templates, $timberContext );

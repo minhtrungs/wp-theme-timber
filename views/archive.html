@@ -1,0 +1,9 @@
+{# This file demonstrates using most of the index.html template and modifying 
+   just a small part. See `search.html` for an example of another approach #}
+
+{% extends "index.html" %}
+
+{% block content %}
+  <h3>This is my archive</h3>
+  {{ parent() }}
+{% endblock %}

@@ -25,6 +25,7 @@ class ThemeConfig extends Timber\Site {
 		$context['options']  = get_fields('options');
 		//** Các thông số về tên site, url... sẽ được gọi thông qua key 'site' */
 		$context['site']  = $this;
+		
 		return $context;
 	}
 
