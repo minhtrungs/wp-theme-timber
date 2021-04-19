@@ -68,7 +68,7 @@ if (! function_exists( 'require_files' ) ){
 	}
 }
 
-/** Khai báo file sẽ load trong thư mục functions */
+/** Khai báo file sẽ load trong thư mục admin */
 $admin = [
 	'option',
 	'hook'
@@ -76,7 +76,7 @@ $admin = [
 require_files('/admin', $admin);
 
 
-/** Khai báo file sẽ load trong thư mục admin */
+/** Khai báo file sẽ load trong thư mục functions */
 $functions = [
 	
 ];
