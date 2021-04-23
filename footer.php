@@ -1,21 +1,15 @@
 <?php
-/**
- * Third party plugins that hijack the theme will call wp_footer() to get the footer template.
- * We use this to end our output buffer (started in header.php) and render into the view/page-plugin.html template.
- *
- * If you're not using a plugin that requries this behavior (ones that do include Events Calendar Pro and
- * WooCommerce) you can delete this file and header.php
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.1
+/** 
+ * Trong Timber file header.php và footer.php gần như sẽ không cần dùng đến
+ * Trường hợp sẽ dùng đến là khi các plugin thứ 3 có gọi đến 2 hàm là get_header() và get_footer() như woocommerce, forum...
  */
 
-$timberContext = $GLOBALS['timberContext']; // @codingStandardsIgnoreFile
+$timberContext = $GLOBALS['timberContext'];
 if ( ! isset( $timberContext ) ) {
-	throw new \Exception( 'Timber context not set in footer.' );
+	throw new \Exception( 'Chưa gọi context.' );
 }
 $timberContext['content'] = ob_get_contents();
 ob_end_clean();
-$templates = array( 'page-plugin.html' );
-Timber::render( $templates, $timberContext );
+
+/** Template page-plugin.html sẽ được sử dụng khi các plugin có sử dụng get_header() và get_footer() */
+Timber::render( 'page-plugin.html', $timberContext );

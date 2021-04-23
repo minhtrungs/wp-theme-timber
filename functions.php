@@ -78,7 +78,7 @@ require_files('/admin', $admin);
 
 /** Khai báo file sẽ load trong thư mục functions */
 $functions = [
-	
+	'query'
 ];
 require_files('/functions', $functions);
 
@@ -93,7 +93,7 @@ $classes = [
 require_files('/classes', $classes);
 
 
-/** Thiết lập thư mục chứa file view (twig) */
+/** Thiết lập thư mục chứa file view (html) */
 Timber::$dirname = array( 'views' );
 
 /** Auto Escape */

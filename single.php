@@ -1,20 +1,13 @@
 <?php
-/**
- * The Template for displaying all single posts
- *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
- */
+/** File này xử lý dữ liệu cho các trang chi tiết bài viết (post hoặc custom post type) */
+$context  			= 	Timber::context();
+$post				= 	Timber::get_post();
+$context['post'] 	= 	$post;
 
-$context         = Timber::context();
-$timber_post     = Timber::get_post();
-$context['post'] = $timber_post;
-
-if ( post_password_required( $timber_post->ID ) ) {
-	Timber::render( 'single-password.html', $context );
-} else {
-	Timber::render( array( 'single-' . $timber_post->ID . '.html', 'single-' . $timber_post->post_type . '.html', 'single-' . $timber_post->slug . '.html', 'single.html' ), $context );
+if( post_password_required( $post->ID ) ) {
+	//** Sử dụng template password.html nếu bài viết có đặt mật khẩu */
+	Timber::render( 'single/password.html', $context );
+}else {
+	//** Nếu là bài viết bình thường thì sử dụng template content.html */
+	Timber::render( 'single/content.html', $context );
 }

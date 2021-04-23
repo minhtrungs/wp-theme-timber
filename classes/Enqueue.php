@@ -16,7 +16,7 @@ class Enqueue
     }
 
     public function admin_styles(){
-        // wp_enqueue_script( 'bvpnt-jquery', THEME_DIR . '/public/js/jquery.js', array(), THEME_VERSION, false );
+        // wp_enqueue_script( 'bvpnt-jquery', THEME_DIR . '/public/css/bootstrap.js', array(), THEME_VERSION, false );
     }
 
     public function admin_scripts(){

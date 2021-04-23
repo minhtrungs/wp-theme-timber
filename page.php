@@ -1,28 +1,8 @@
 <?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * To generate specific templates for your pages you can use:
- * /mytheme/templates/page-mypage.html
- * (which will still route through this PHP file)
- * OR
- * /mytheme/page-mypage.php
- * (in which case you'll want to duplicate this file and save to the above path)
- *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
- */
+/** File này xử lý dữ liệu cho những trang có template mặc định */
+$context            =   Timber::context();
+$post               =   new Timber\Post();
+$context['post']    =   $post;
+/** Page hay post type bất kỳ thì bản chất vẫn đều là post */
 
-$context = Timber::context();
-
-$timber_post     = new Timber\Post();
-$context['post'] = $timber_post;
-Timber::render( array( 'page-' . $timber_post->post_name . '.html', 'page.html' ), $context );
+Timber::render( 'page.html', $context );

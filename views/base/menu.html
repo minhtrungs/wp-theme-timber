@@ -1,0 +1,66 @@
+{% if menu %}
+	<ul class="navigation" id="navbar">
+		{% set max_item = options.header_menu_max_item %}
+		{% for item in menu.items %}
+			{% if loop.index <= max_item %}
+				{% set count = loop.index %}
+				<li class="{{ item.classes | join(' ') }}{% if item.children %} dropdown{% endif %}">
+					{% if item.children %}
+						<span>{{ item.title }}</span>
+					{% else %}
+						<a href="{{ item.link }}">{{ item.title }}</a>
+					{% endif %}
+					{% if item.children %}
+						<ul>
+							{% for child in item.children %}
+								<li class="{{ item.classes | join(' ') }}{% if child.children %} dropdown{% endif %}">
+									{% if child.children %}
+										<span>{{ child.title }}</span>
+									{% else %}
+										<a href="{{ child.link  }}">{{ child.title }}</a>
+									{% endif %}
+									{% if child.children %}
+										<ul {% if count > 4 %}class="right"{% endif %}>
+											{% for grand in child.children %}
+												<li class="{{ item.classes | join(' ') }}">
+													<a href="{{ grand.link  }}">{{ grand.title }}</a>													
+												</li>
+											{% endfor %}
+										</ul>
+									{% endif %}
+								</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</li>
+			{% endif %}
+		{% endfor %}
+		{% if menu.items|length > max_item %}
+			<li class="dropdown">
+				<span>Khác</span>
+				<ul>
+					{% for item in menu.items %}
+						{% if loop.index > max_item %}
+							<li class="{{ item.classes | join(' ') }}{% if item.children %} dropdown{% endif %}">
+								{% if item.children %}
+									<span>{{ item.title }}</span>
+								{% else %}
+									<a href="{{ item.link }}">{{ item.title }}</a>
+								{% endif %}
+								{% if item.children %}
+									<ul class="right">
+										{% for child in item.children %}
+											<li class="{{ item.classes | join(' ') }}">
+												<a href="{{ child.link  }}">{{ child.title }}</a>
+											</li>
+										{% endfor %}
+									</ul>
+								{% endif %}
+							</li>
+						{% endif %}
+					{% endfor %}
+				</ul>
+			</li>
+		{% endif %}
+	</ul>
+{% endif %}

@@ -1,0 +1,12 @@
+{% extends "base.twig" %}
+{% block content %}
+    {# Nội dung page template ở đây #}
+    {# Sử dụng đoạn code dưới để lấy giá trị của meta flexible #}
+    {% for landingpage in post.meta('landingpage') %}
+        {% if landingpage.acf_fc_layout == 'slide_block' %}
+            {% include "templates/landingpage/slide.twig" with{'slides': landingpage} %}
+        {% elseif landingpage.acf_fc_layout == 'intro_block' %}
+            {% include 'templates/landingpage/intro.twig' with{'intro': landingpage} %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}

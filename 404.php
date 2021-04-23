@@ -1,13 +1,5 @@
 <?php
-/**
- * The template for displaying 404 pages (Not Found)
- *
- * Methods for TimberHelper can be found in the /functions sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since    Timber 0.1
- */
+/** File này xử lý cho trang 404 */
 
 $context = Timber::context();
 Timber::render( '404.html', $context );

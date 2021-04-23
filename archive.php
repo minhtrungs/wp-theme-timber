@@ -1,17 +1,8 @@
 <?php
 /**
- * The template for displaying Archive pages.
- *
- * Used to display archive-type pages if nothing more specific matches a query.
- * For example, puts together date-based pages if no date.php file exists.
- *
- * Learn more: http://codex.wordpress.org/Template_Hierarchy
- *
- * Methods for TimberHelper can be found in the /lib sub-directory
- *
- * @package  WordPress
- * @subpackage  Timber
- * @since   Timber 0.2
+ * File này xử lý cho các trang taxonomy, category, ngày tháng, index...
+ * Nếu là custom taxonomy nó sẽ load theo thứ tự ưu tiên sau: taxonomy.php -> taxonomy_taxname.php -> archive.php
+ * Nếu taxonomy là category hoặc tag sẽ load ưu tiên theo file category.php hoặc tag.php
  */
 
 $templates = array( 'archive.html', 'index.html' );
