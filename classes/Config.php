@@ -9,7 +9,18 @@ class ThemeConfig extends Timber\Site {
 		add_action( 'after_setup_theme', array( $this, 'theme_supports' ) );
 		add_filter( 'timber/context', array( $this, 'add_to_context' ) );
 		add_filter( 'timber/twig', array( $this, 'add_to_twig' ) );
+		add_action( 'after_setup_theme', array( $this, 'create_menu' ) );
 	}
+
+	/** Tạo menu */
+	public function create_menu(){
+        register_nav_menus(array(
+            'main' => esc_html__( 'Menu chính', TEXTDOMAIN ),
+        ));
+        register_nav_menus(array(
+            'footer' => esc_html__( 'Menu footer', TEXTDOMAIN ),
+        ));
+    }
 
 	/**
 	 * Thiết lập các giá trị sẽ truyền vào mảng context
@@ -20,7 +31,8 @@ class ThemeConfig extends Timber\Site {
 		 * Menu sẽ được gọi qua key 'menu'. Không truyền đối số 'menuname' Timber sẽ khởi tạo menu mặc định 
 		 * Mỗi key sẽ tương ứng với 1 menu, nếu muốn dùng menu nào thì cần khởi tạo đúng tên menu đó.
 		 * */
-		$context['menu']  = new Timber\Menu();
+		$context['menu_main']  = new Timber\Menu('main');
+		$context['menu_footer']  = new Timber\Menu('footer');
 		/** Toàn bộ option được tạo bằng ACF sẽ được gọi thông qua key 'options' */
 		$context['options']  = get_fields('options');
 		//** Các thông số về tên site, url... sẽ được gọi thông qua key 'site' */
