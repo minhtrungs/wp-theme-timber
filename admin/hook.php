@@ -16,3 +16,10 @@ add_filter('acf/settings/show_admin', 'my_acf_show_admin');
 function my_acf_show_admin($show) {
    return WP_DEBUG;
 }
+
+//** Cho phép tải lên file .webp */
+add_filter('mime_types', 'webp_upload_mimes');
+function webp_upload_mimes($mime_types) {
+   $mime_types['webp'] = 'image/webp';
+   return $mime_types;
+}
